@@ -1,5 +1,8 @@
 package com.example.products_ms.models.enums;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
+@JsonFormat(shape=JsonFormat.Shape.STRING)
 public enum ProductStatus {
     DEFAULT,
     ALPHA,

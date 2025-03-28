@@ -1,7 +1,10 @@
 package com.example.products_ms.models;
 
 import com.example.products_ms.models.enums.ProductStatus;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.LastModifiedDate;
@@ -9,6 +12,7 @@ import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 /**
  * This class represents the [product] entity in our database with MongoDB
@@ -25,47 +29,48 @@ public class Product {
     @Indexed(unique = true)
     private String name;
     private String description;
-    private Category[] category;
-    private String[] versions;
+    private List<String> category;
     private String releasedAt;
     private ProductStatus status;
-    private Language[] languages;
+    private List<Language> languages;
     private boolean prize;
-    private String[] platforms;
-    private String[] license;
+    private List<String> platforms;
+    private List<String> license;
     private float size;
-    private String[] architecture;
-    private String[] minimumRequirements;
+    private List<String> architecture;
+    private List<String> minimumRequirements;
     private Company company;
 
+    @JsonFormat(shape= JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     @CreatedDate
     private LocalDateTime createdAt;
 
+    @JsonFormat(shape= JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     @LastModifiedDate
-    private String updatedAt;
+    private LocalDateTime updatedAt;
+
+    public Product() {};
 
     public Product(String id,
                    String name,
                    String description,
-                   Category[] category,
-                   String[] versions,
+                   List<String> category,
                    String releasedAt,
                    ProductStatus status,
-                   Language[] languages,
+                   List<Language> languages,
                    boolean prize,
-                   String[] platforms,
-                   String[] license,
+                   List<String> platforms,
+                   List<String> license,
                    float size,
-                   String[] architecture,
-                   String[] minimumRequirements,
+                   List<String> architecture,
+                   List<String> minimumRequirements,
                    Company company,
                    LocalDateTime createdAt,
-                   String updatedAt) {
+                   LocalDateTime updatedAt) {
         this.id = id;
         this.name = name;
         this.description = description;
         this.category = category;
-        this.versions = versions;
         this.releasedAt = releasedAt;
         this.status = status;
         this.languages = languages;
@@ -80,124 +85,12 @@ public class Product {
         this.updatedAt = updatedAt;
     }
 
-    public String getUpdatedAt() {
-        return updatedAt;
+    public String getId() {
+        return id;
     }
 
-    public void setUpdatedAt(String updatedAt) {
-        this.updatedAt = updatedAt;
-    }
-
-    public LocalDateTime getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(LocalDateTime createdAt) {
-        this.createdAt = createdAt;
-    }
-
-    public Company getCompany() {
-        return company;
-    }
-
-    public void setCompany(Company company) {
-        this.company = company;
-    }
-
-    public String[] getMinimumRequirements() {
-        return minimumRequirements;
-    }
-
-    public void setMinimumRequirements(String[] minimumRequirements) {
-        this.minimumRequirements = minimumRequirements;
-    }
-
-    public String[] getArchitecture() {
-        return architecture;
-    }
-
-    public void setArchitecture(String[] architecture) {
-        this.architecture = architecture;
-    }
-
-    public float getSize() {
-        return size;
-    }
-
-    public void setSize(float size) {
-        this.size = size;
-    }
-
-    public String[] getLicense() {
-        return license;
-    }
-
-    public void setLicense(String[] license) {
-        this.license = license;
-    }
-
-    public String[] getPlatforms() {
-        return platforms;
-    }
-
-    public void setPlatforms(String[] platforms) {
-        this.platforms = platforms;
-    }
-
-    public boolean isPrize() {
-        return prize;
-    }
-
-    public void setPrize(boolean prize) {
-        this.prize = prize;
-    }
-
-    public Language[] getLanguages() {
-        return languages;
-    }
-
-    public void setLanguages(Language[] languages) {
-        this.languages = languages;
-    }
-
-    public ProductStatus getStatus() {
-        return status;
-    }
-
-    public void setStatus(ProductStatus status) {
-        this.status = status;
-    }
-
-    public String getReleasedAt() {
-        return releasedAt;
-    }
-
-    public void setReleasedAt(String releasedAt) {
-        this.releasedAt = releasedAt;
-    }
-
-    public String[] getVersions() {
-        return versions;
-    }
-
-    public void setVersions(String[] versions) {
-        this.versions = versions;
-    }
-
-    public Category[] getCategory() {
-        return category;
-    }
-
-    public void setCategory(Category[] category) {
-        this.category = category;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -208,11 +101,115 @@ public class Product {
         this.name = name;
     }
 
-    public String getId() {
-        return id;
+    public String getDescription() {
+        return description;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public List<String> getCategory() {
+        return category;
+    }
+
+    public void setCategory(List<String> category) {
+        this.category = category;
+    }
+
+    public String getReleasedAt() {
+        return releasedAt;
+    }
+
+    public void setReleasedAt(String releasedAt) {
+        this.releasedAt = releasedAt;
+    }
+
+    public ProductStatus getStatus() {
+        return status;
+    }
+
+    public void setStatus(ProductStatus status) {
+        this.status = status;
+    }
+
+    public List<Language> getLanguages() {
+        return languages;
+    }
+
+    public void setLanguages(List<Language> languages) {
+        this.languages = languages;
+    }
+
+    public boolean isPrize() {
+        return prize;
+    }
+
+    public void setPrize(boolean prize) {
+        this.prize = prize;
+    }
+
+    public List<String> getPlatforms() {
+        return platforms;
+    }
+
+    public void setPlatforms(List<String> platforms) {
+        this.platforms = platforms;
+    }
+
+    public List<String> getLicense() {
+        return license;
+    }
+
+    public void setLicense(List<String> license) {
+        this.license = license;
+    }
+
+    public float getSize() {
+        return size;
+    }
+
+    public void setSize(float size) {
+        this.size = size;
+    }
+
+    public List<String> getArchitecture() {
+        return architecture;
+    }
+
+    public void setArchitecture(List<String> architecture) {
+        this.architecture = architecture;
+    }
+
+    public List<String> getMinimumRequirements() {
+        return minimumRequirements;
+    }
+
+    public void setMinimumRequirements(List<String> minimumRequirements) {
+        this.minimumRequirements = minimumRequirements;
+    }
+
+    public Company getCompany() {
+        return company;
+    }
+
+    public void setCompany(Company company) {
+        this.company = company;
+    }
+
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public LocalDateTime getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(LocalDateTime updatedAt) {
+        this.updatedAt = updatedAt;
     }
 }

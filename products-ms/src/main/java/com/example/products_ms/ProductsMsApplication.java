@@ -1,5 +1,6 @@
 package com.example.products_ms;
 
+import com.example.products_ms.common.helpers.ProductsRouterTest;
 import com.example.products_ms.models.Product;
 import com.example.products_ms.repositories.ProductsRepository;
 import org.slf4j.Logger;
@@ -19,7 +20,9 @@ public class ProductsMsApplication implements CommandLineRunner {
 		ConfigurableApplicationContext context = SpringApplication.run(ProductsMsApplication.class, args);
 
 
+		ProductsRouterTest pd = context.getBean(ProductsRouterTest.class);
 
+		logger.info(">> Message: " + pd.getMessage().block());
 
 		// Some logging stuff
 		logger.info("Hello World!");

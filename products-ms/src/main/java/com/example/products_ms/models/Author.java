@@ -1,6 +1,7 @@
 package com.example.products_ms.models;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.LastModifiedDate;
@@ -16,6 +17,7 @@ import java.util.List;
 
 @Data // This annotation is used to avoid declare  [getters and setters] functions
 @Document(collection = "authors")
+@NoArgsConstructor
 public class Author {
     @Id
     private String id;
