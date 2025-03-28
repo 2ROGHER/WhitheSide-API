@@ -7,6 +7,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ConfigurableApplicationContext;
 
 @SpringBootApplication
 public class ProductsMsApplication implements CommandLineRunner {
@@ -15,7 +16,12 @@ public class ProductsMsApplication implements CommandLineRunner {
 	private ProductsRepository repository;
 
 	public static void main(String[] args) {
-		SpringApplication.run(ProductsMsApplication.class, args);
+		ConfigurableApplicationContext context = SpringApplication.run(ProductsMsApplication.class, args);
+
+
+
+
+		// Some logging stuff
 		logger.info("Hello World!");
 		logger.info("This is my application with MSA and SpringBoot");
 	}

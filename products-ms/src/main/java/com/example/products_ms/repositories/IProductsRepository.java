@@ -6,7 +6,7 @@ import com.example.products_ms.models.enums.ProductStatus;
 import java.util.List;
 
 /**
- * This repository contains all [custom operations] to be performed in the collections at MongoDB.
+ * This repository contains some custom methods to perform some operations at database MongoDB.
  */
 public interface IProductsRepository {
     List<Product>  findAllProductsById(String id);

@@ -11,6 +11,6 @@ public enum ProductStatus {
     ACTIVE,
     MAINTAINED,
     EOL,
-    ABANDONWARE,
+    ABANDOWARE,
     FORKED
 }

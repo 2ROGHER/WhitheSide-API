@@ -6,6 +6,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 /**
  * This configuration class is used to control the (JSON) parser with Jackson
+ * It uses the Jackson library to parse responses from API Gateway
+ * [@Configuration] indicates that this class is used to create [beans] and this will be managed by the Spring Context.
  */
 @Configuration
 public class JacksonConfig {

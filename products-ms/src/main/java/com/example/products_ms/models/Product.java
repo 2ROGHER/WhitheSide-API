@@ -12,6 +12,8 @@ import java.time.LocalDateTime;
 
 /**
  * This class represents the [product] entity in our database with MongoDB
+ * In this class we are letting the [setters and getters] with educational purposes. Because, we are using
+ * [@Data]. This annotation avoids declare setters and getters.
  */
 // We need to add the [audience] to track the flow.
 @Data
