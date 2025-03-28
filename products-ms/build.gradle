@@ -1,0 +1,53 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '3.4.4'
+	id 'io.spring.dependency-management' version '1.1.7'
+}
+
+group = 'com.example'
+version = '0.0.1-SNAPSHOT'
+
+java {
+	toolchain {
+		languageVersion = JavaLanguageVersion.of(17)
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+	// Add web-dev-tools to reload project in each code change
+	developmentOnly("org.springframework.boot:spring-boot-devtools")
+
+	// Testing ro runt test in this project
+	testImplementation("io.projectreactor:reactor-test")
+
+	// 1. We need to add the dependencies to communicate with [message pattern] with this service
+	implementation("org.springframework.boot:spring-boot-starter-activemq")
+
+	// 2. Now add the dependencies [Spring MongoDB] to communicate and retrieve POJOs by the document-based database.
+	// MongoDb.
+	implementation("org.springframework.boot:spring-boot-starter-data-mongodb")
+
+	// 3. Add [data checking and validation] with Lombok
+	compileOnly("org.projectlombok:lombok")
+	annotationProcessor("org.projectlombok:lombok")
+
+	// 4. Add [Jackson] to control the JSON parsing
+	// https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind
+	implementation("com.fasterxml.jackson.core:jackson-databind:2.18.3")
+	// https://mvnrepository.com/artifact/com.fasterxml.jackson.datatype/jackson-datatype-jsr310
+	implementation("com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.18.3")
+
+	// 5. Add [Spring Reactive] to manage the connection [reactively] with the API gateway
+	implementation("org.springframework.boot:spring-boot-starter-webflux")
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
